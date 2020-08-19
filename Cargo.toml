@@ -8,6 +8,5 @@ edition = "2018"
 
 [dependencies]
 chrono = "0.4.15"
-# flate2 = "1.0"
 guid-create = "0.1.1"
 regex = "0.1"

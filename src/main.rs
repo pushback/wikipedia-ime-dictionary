@@ -1,7 +1,6 @@
-use regex::Regex;
-// use flate2::read::GzDecoder;
 use chrono::Local;
 use guid_create::GUID;
+use regex::Regex;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{BufReader, BufWriter};
@@ -84,27 +83,9 @@ fn output_footer(output_file: &mut std::io::BufWriter<std::fs::File>) {
 
 fn main() -> Result<(), std::io::Error> {
     const ABSTRUCT_FILE_PATH: &str = "./jawiki-latest-abstract.xml";
-    // const ABSTRUCT_FILE_PATH: &str = "./jawiki-latest-abstract.xml.gz";
-    let input_file = BufReader::new(File::open(ABSTRUCT_FILE_PATH).unwrap());
-    // let gz = GzDecoder::new(file);
-    // gz.header().expect("Invalid gz header");
-
-    // for (index, line) in io::BufReader::new(gz).lines().enumerate() {
-    //     println!(">>{}, {:?}", index, line);
-    // }
-
-    //     // MS-IMEヘッダ出力
-    //     println!(
-    //         r#"!Microsoft IME Dictionary Tool
-    // !Version:
-    // !Format:WORDLIST
-    // !wikipedia-ime-dictionary
-    // !Output File Name:
-    // !DateTime:{}"#,
-    //         Local::now()
-    //     );
 
     // xml読み込み（GZIP展開がうまくいかないので仮）
+    let input_file = BufReader::new(File::open(ABSTRUCT_FILE_PATH).unwrap());
     let mut dict_count = 0;
     let mut word_count = 0;
     let mut output_file = open_dictionary(dict_count);
